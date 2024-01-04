@@ -141,10 +141,11 @@ def generate_messages_from_description(description, app_type, name):
             'MAX_QUESTIONS': MAX_QUESTIONS
         })
 
+    system_message = get_sys_message('product_owner')
+    system_message['content'] += " " + specs_instructions
     return [
-        get_sys_message('product_owner'),
+        system_message,
         {'role': 'user', 'content': prompt},
-        {'role': 'system', 'content': specs_instructions},
     ]
 
 
